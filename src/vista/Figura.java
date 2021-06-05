@@ -2,7 +2,7 @@ package vista;
 
 import processing.core.PApplet;
 
-public abstract class Figura implements Runnable{
+public abstract class Figura extends Thread{
 	
 	protected float posX;
 	protected float posY;
@@ -29,10 +29,12 @@ public abstract class Figura implements Runnable{
 		switch (tipo) {
 		case 0:
 			this.app.noStroke();
+			
 			this.app.fill(r, g, b);
 			this.app.ellipse(posX, posY, sizeX, sizeY);
 			break;
 		case 1:
+			this.app.strokeWeight(3);
 			this.app.stroke(r, g, b);
 			this.app.fill(255);
 			this.app.ellipse(posX, posY, sizeX, sizeY);
@@ -43,14 +45,6 @@ public abstract class Figura implements Runnable{
 	public abstract void mover();
 	
 	public void run() {
-		while(true) {
-			System.out.println("Se ha ejecutado el programa");
-			try {
-				Thread.sleep(5000);
-			} catch (Exception e) {
-				// TODO: handle exception
-			}
-		}
-		
 	}
+		
 }

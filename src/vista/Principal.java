@@ -1,5 +1,7 @@
 package vista;
 
+import java.util.ArrayList;
+
 import processing.core.PApplet;
 
 public class Principal extends PApplet{
@@ -9,12 +11,31 @@ public class Principal extends PApplet{
 		PApplet.main(Principal.class.getName());
 	}
 	
+	ArrayList<Polo> polos;
+	
 	public void settings() {
 		size(800,600);
 	}
 	
+	public void setup() {
+		polos = new ArrayList<Polo>();
+		for (int i = 0; i < 20; i++) {
+			polos.add(new Polo(this, random(700), random(500), 30, 30, 2, 2));
+			
+		}
+		
+		for (Polo polo : polos) {
+			polo.start();
+		}
+	}
+	
 	public void draw() {
-		background(0,0,200);
+		background(240,255,255);
+		
+		for (Polo polo : polos) {
+			polo.pintar(255, 150, 150, 1);
+			polo.mover();
+		}
 	}
 
 }
