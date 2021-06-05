@@ -1,5 +1,8 @@
 package vista;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 import processing.core.PApplet;
 
 public class Polo extends Figura{
@@ -30,9 +33,15 @@ public class Polo extends Figura{
 	
 	public void pintarMensaje() {
 		if(onLlamando) {
-			app.text(this.posX + " "+ this.posY, posX, posY);
+			BigDecimal pposX= new BigDecimal(posX).setScale(1, RoundingMode.HALF_EVEN);
+			BigDecimal pposY= new BigDecimal(posY).setScale(1, RoundingMode.HALF_EVEN);
+			app.fill(0);
+			app.text(pposX + " "+ pposY, posX-(sizeX), posY+ sizeY);
 		}
+		
+
 	}
+	
 
 	@Override
 	public void mover() {
@@ -50,6 +59,20 @@ public class Polo extends Figura{
 		
 
 	
+	}
+
+	public boolean isOnLlamando() {
+		return onLlamando;
+	}
+
+	public void setOnLlamando(boolean onLlamando) {
+		this.onLlamando = onLlamando;
+	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

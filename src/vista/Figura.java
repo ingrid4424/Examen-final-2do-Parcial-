@@ -29,7 +29,6 @@ public abstract class Figura extends Thread{
 		switch (tipo) {
 		case 0:
 			this.app.noStroke();
-			
 			this.app.fill(r, g, b);
 			this.app.ellipse(posX, posY, sizeX, sizeY);
 			break;
@@ -44,7 +43,90 @@ public abstract class Figura extends Thread{
 	
 	public abstract void mover();
 	
-	public void run() {
+	public abstract void run();
+
+
+
+	public float getPosX() {
+		return posX;
+	}
+
+
+
+	public void setPosX(float posX) {
+		this.posX = posX;
+	}
+
+
+
+	public float getPosY() {
+		return posY;
+	}
+
+
+
+	public void setPosY(float posY) {
+		this.posY = posY;
+	}
+
+
+
+	public int getSizeX() {
+		return sizeX;
+	}
+
+
+
+	public void setSizeX(int sizeX) {
+		this.sizeX = sizeX;
+	}
+
+
+
+	public int getSizeY() {
+		return sizeY;
+	}
+
+
+
+	public void setSizeY(int sizeY) {
+		this.sizeY = sizeY;
+	}
+
+
+
+	public PApplet getApp() {
+		return app;
+	}
+
+
+
+	public void setApp(PApplet app) {
+		this.app = app;
+	}
+
+
+
+	public int getDirX() {
+		return dirX;
+	}
+
+
+
+	public void setDirX(int dirX) {
+		this.dirX = dirX;
+	}
+
+
+
+	public int getDirY() {
+		return dirY;
+	}
+
+
+
+	public void setDirY(int dirY) {
+		this.dirY = dirY;
 	}
 		
 }

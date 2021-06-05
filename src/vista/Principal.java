@@ -25,10 +25,14 @@ public class Principal extends PApplet{
 			
 		}
 		marco = new Marco(this, 50, 50, 30, 30, 1, 1);
+		marco.start();
 		
 		for (Polo polo : polos) {
 			polo.start();
 		}
+		
+		
+		
 	}
 	
 	public void draw() {
@@ -38,10 +42,13 @@ public class Principal extends PApplet{
 			polo.pintar(255, 150, 150, 1);
 			polo.pintarMensaje();
 			polo.mover();
+			polo.setOnLlamando(marco.isOnLLamar());
 		}
 		
 		marco.pintar(0, 0, 255, 0);
+		marco.pintarMensaje();
 		marco.mover();
+		
 	}
 
 }
