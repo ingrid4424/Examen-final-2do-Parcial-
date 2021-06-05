@@ -4,6 +4,8 @@ import processing.core.PApplet;
 
 public class Polo extends Figura{
 
+	private boolean onLlamando;
+
 	public Polo(PApplet app, float posX, float posY, int sizeX, int sizeY, int dirX, int dirY) {
 		super(app, posX, posY, sizeX, sizeY,  dirX, dirY);
 		// TODO Auto-generated constructor stub
@@ -24,6 +26,12 @@ public class Polo extends Figura{
 				}
 				).start();
 		
+	}
+	
+	public void pintarMensaje() {
+		if(onLlamando) {
+			app.text(this.posX + " "+ this.posY, posX, posY);
+		}
 	}
 
 	@Override

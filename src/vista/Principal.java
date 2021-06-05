@@ -36,6 +36,7 @@ public class Principal extends PApplet{
 		
 		for (Polo polo : polos) {
 			polo.pintar(255, 150, 150, 1);
+			polo.pintarMensaje();
 			polo.mover();
 		}
 		
