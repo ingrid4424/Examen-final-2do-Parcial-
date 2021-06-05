@@ -5,29 +5,24 @@ import java.math.RoundingMode;
 
 import processing.core.PApplet;
 
-public class Polo extends Figura{
+public class Polo extends Figura implements Comparable<Polo>{
 
 	private boolean onLlamando;
+	private float distanciaMarco;
+
+	public float getDistanciaMarco() {
+		return distanciaMarco;
+	}
+
+	public void setDistanciaMarco(float distanciaMarco) {
+		this.distanciaMarco = distanciaMarco;
+	}
 
 	public Polo(PApplet app, float posX, float posY, int sizeX, int sizeY, int dirX, int dirY) {
 		super(app, posX, posY, sizeX, sizeY,  dirX, dirY);
 		// TODO Auto-generated constructor stub
 		
-		new Thread(
-				() -> {
-					while (true) {
-						
-						try {
-							Thread.sleep(5000);
-							System.out.println("Se ha ejecutado el programa");
-							this.dirX = (int) this.app.random(-2, 2);
-							Thread.sleep(5000);
-						} catch (Exception e) {
-							// TODO: handle exception
-						}
-					}
-				}
-				).start();
+
 		
 	}
 	
@@ -73,6 +68,26 @@ public class Polo extends Figura{
 	public void run() {
 		// TODO Auto-generated method stub
 		
+					while (true) {
+						
+						try {
+							
+							
+							this.dirX = (int) this.app.random(-2, 2);
+							
+							Thread.sleep(10000);
+						} catch (Exception e) {
+							// TODO: handle exception
+						}
+					}
+				
+			
+	}
+
+	@Override
+	public int compareTo(Polo o) {
+		// TODO Auto-generated method stub
+		return (int) (this.getDistanciaMarco() - o.getDistanciaMarco());
 	}
 
 }

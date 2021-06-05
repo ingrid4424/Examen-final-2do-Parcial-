@@ -5,11 +5,16 @@ import processing.core.PApplet;
 public class Marco extends Figura{
 
 	private boolean onLLamar;
+	private float targetX;
+	private float targetY;
+	private float dx, dy;
 
 	public Marco(PApplet app, float posX, float posY, int sizeX, int sizeY, int dirX, int dirY) {
 		super(app, posX, posY, sizeX, sizeY, dirX, dirY);
 		// TODO Auto-generated constructor stub
 		onLLamar = false;
+		targetX = this.app.mouseX;
+		targetY = this.app.mouseY;
 	}
 	
 	
@@ -24,13 +29,13 @@ public class Marco extends Figura{
 	@Override
 	public void mover() {
 		// TODO Auto-generated method stub
-		 float targetX = this.app.mouseX;
-		  float dx = targetX - this.posX;
-		  this.posX += dx * 0.05;
+		
+		  this.dx = this.targetX - this.posX;
+		  this.posX += this.dx * 0.05;
 		  
-		  float targetY = this.app.mouseY;
-		  float dy = targetY - this.posY;
-		  this.posY += dy * 0.05;
+		  
+		  this.dy = this.targetY - this.posY;
+		  this.posY += this.dy * 0.05;
 	}
 
 	@Override
@@ -39,13 +44,18 @@ public class Marco extends Figura{
 		while(true) {
 			try {
 				onLLamar = true;
-				Thread.sleep(1500);
+				Thread.sleep(1000);
 				onLLamar = false;
-				Thread.sleep(2000);
+				
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
 		}
+	}
+	
+	public void setTarget(float targetX, float targetY) {
+		this.targetX = targetX;
+		this.targetY = targetY;
 	}
 
 	public boolean isOnLLamar() {

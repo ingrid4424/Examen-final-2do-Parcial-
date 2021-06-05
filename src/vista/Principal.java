@@ -1,6 +1,9 @@
 package vista;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Iterator;
 
 import processing.core.PApplet;
 
@@ -32,22 +35,66 @@ public class Principal extends PApplet{
 		}
 		
 		
+	
+			
 		
 	}
 	
 	public void draw() {
 		background(240,255,255);
-		
-		for (Polo polo : polos) {
-			polo.pintar(255, 150, 150, 1);
-			polo.pintarMensaje();
-			polo.mover();
-			polo.setOnLlamando(marco.isOnLLamar());
+		try {
+			for (Polo polo : polos) {
+				polo.pintar(255, 150, 150, 1);
+				polo.pintarMensaje();
+				polo.mover();
+				polo.setOnLlamando(marco.isOnLLamar());
+				
+			}
+			
+			marco.pintar(0, 0, 255, 0);
+			marco.pintarMensaje();
+			marco.mover();
+			
+			if(marco.isOnLLamar()) {
+				calcularTarget();
+			}
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage() + " " + e.getCause());
 		}
 		
-		marco.pintar(0, 0, 255, 0);
-		marco.pintarMensaje();
-		marco.mover();
+		
+	}
+	
+	public void calcularTarget() {
+		
+		new Thread(
+				() ->{
+					
+						try {
+							Thread.sleep(250);
+							for (int i = 0; i< polos.size(); i++) {
+								float ditanciaMarco = dist(polos.get(i).getPosX(), polos.get(i).getPosY(), marco.getPosX(), marco.getPosY());
+								polos.get(i).setDistanciaMarco(ditanciaMarco);
+							}
+							Thread.sleep(250);
+							Collections.sort(polos);
+							Thread.sleep(250);
+							marco.setTarget(polos.get(0).getPosX(), polos.get(0).getPosY());
+							Thread.sleep(250);
+						} catch (Exception e) {
+							// TODO: handle exception
+							System.out.println(e.getMessage() + " " + e.getCause());
+							
+						}
+					
+					
+					
+					
+				}
+				).start();
 		
 	}
 
