@@ -8,5 +8,13 @@ public class Principal extends PApplet{
 		// TODO Auto-generated method stub
 		PApplet.main(Principal.class.getName());
 	}
+	
+	public void settings() {
+		size(800,600);
+	}
+	
+	public void draw() {
+		background(0,0,200);
+	}
 
 }
