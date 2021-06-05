@@ -12,6 +12,7 @@ public class Principal extends PApplet{
 	}
 	
 	ArrayList<Polo> polos;
+	Marco marco;
 	
 	public void settings() {
 		size(800,600);
@@ -23,6 +24,7 @@ public class Principal extends PApplet{
 			polos.add(new Polo(this, random(700), random(500), 30, 30, 2, 2));
 			
 		}
+		marco = new Marco(this, 50, 50, 30, 30, 1, 1);
 		
 		for (Polo polo : polos) {
 			polo.start();
@@ -36,6 +38,9 @@ public class Principal extends PApplet{
 			polo.pintar(255, 150, 150, 1);
 			polo.mover();
 		}
+		
+		marco.pintar(0, 0, 255, 0);
+		marco.mover();
 	}
 
 }
