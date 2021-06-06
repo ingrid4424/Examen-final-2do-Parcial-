@@ -2,7 +2,7 @@ package vista;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
+
 
 import processing.core.PApplet;
 
@@ -54,6 +54,8 @@ public class Principal extends PApplet{
 			marco.pintarMensaje();
 			marco.mover();
 			
+			eliminarElementos();
+			
 			if(marco.isOnLLamar()) {
 				calcularTarget();
 			}
@@ -95,6 +97,16 @@ public class Principal extends PApplet{
 				}
 				).start();
 		
+	}
+	
+	public void eliminarElementos() {
+		for (int i = 0; i< polos.size(); i++) {
+			float ditanciaMarco = dist(polos.get(i).getPosX(), polos.get(i).getPosY(), marco.getPosX(), marco.getPosY());
+			if(ditanciaMarco<30) {
+				polos.remove(polos.get(i));
+				System.out.println("eliminado");
+			}
+		}
 	}
 
 }
