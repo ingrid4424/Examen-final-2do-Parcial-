@@ -63,6 +63,9 @@ public class Principal extends PApplet{
 			for (Polo polo : polos) {
 				for (Marco marco : marcos) {
 					polo.setOnLlamando(marco.isOnLLamar());
+					if(dist(polo.getPosX(), polo.getPosY(), marco.getPosX(), marco.getPosY())<50) {
+						polo.movimientoRandomico();
+					}
 				}
 				
 				
@@ -87,6 +90,9 @@ public class Principal extends PApplet{
 			//////////////////
 			
 			eliminarElementos();
+			
+			///////////
+			
 			
 			/*if(marco.isOnLLamar()) {
 				calcularTarget();
