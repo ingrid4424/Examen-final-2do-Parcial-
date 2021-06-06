@@ -43,6 +43,7 @@ public class Marco extends Figura{
 		// TODO Auto-generated method stub
 		while(true) {
 			try {
+				Thread.sleep(1000);
 				onLLamar = true;
 				Thread.sleep(1000);
 				onLLamar = false;

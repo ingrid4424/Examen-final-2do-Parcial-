@@ -1,7 +1,6 @@
 package vista;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 
@@ -62,7 +61,7 @@ public class Principal extends PApplet{
 			
 		} catch (Exception e) {
 			// TODO: handle exception
-			System.out.println(e.getMessage() + " " + e.getCause());
+			//System.out.println(e.getMessage() + " " + e.getCause());
 		}
 		
 		
@@ -74,16 +73,16 @@ public class Principal extends PApplet{
 				() ->{
 					
 						try {
-							Thread.sleep(250);
+							Thread.sleep(2000);
 							for (int i = 0; i< polos.size(); i++) {
 								float ditanciaMarco = dist(polos.get(i).getPosX(), polos.get(i).getPosY(), marco.getPosX(), marco.getPosY());
 								polos.get(i).setDistanciaMarco(ditanciaMarco);
 							}
-							Thread.sleep(250);
+							
 							Collections.sort(polos);
-							Thread.sleep(250);
+							
 							marco.setTarget(polos.get(0).getPosX(), polos.get(0).getPosY());
-							Thread.sleep(250);
+							
 						} catch (Exception e) {
 							// TODO: handle exception
 							System.out.println(e.getMessage() + " " + e.getCause());
